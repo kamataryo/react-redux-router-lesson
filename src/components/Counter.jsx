@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Header from './Header.jsx'
 
 const mapStateToProps = state => ({
   count: state.counter.count
@@ -28,14 +29,17 @@ export default class Counter extends React.Component {
 
 
     return (
-      <main>
-        <h2>{ 'Count me!' }</h2>
-        <div>{ 'result: ' }<strong>{ count }</strong></div>
-        <button onClick={ countUp }>{ 'up' }</button>
-        <button onClick={ countDown }>{ 'down' }</button>
-        <button onClick={ doubleUp }>{ 'double' }</button>
-        <button onClick={ doubleUpAsync }>{ 'double async' }</button>
-      </main>
+      <div>
+        <Header />
+        <main>
+          <h2>{ 'Count me!' }</h2>
+          <div>{ 'result: ' }<strong>{ count }</strong></div>
+          <button onClick={ countUp }>{ 'up' }</button>
+          <button onClick={ countDown }>{ 'down' }</button>
+          <button onClick={ doubleUp }>{ 'double' }</button>
+          <button onClick={ doubleUpAsync }>{ 'double async' }</button>
+        </main>
+      </div>
     )
   }
 }
