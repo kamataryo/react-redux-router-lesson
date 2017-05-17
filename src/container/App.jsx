@@ -3,6 +3,9 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { routerReducer, routerMiddleware } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
 import { Provider }   from 'react-redux'
+
+import simpleLoggerMiddleware from '../middlewares/simpleLogger'
+
 import counterReducer from '../reducers/counter'
 import notepadReducer from '../reducers/notepad'
 
@@ -12,14 +15,17 @@ import Counter from '../components/Counter.jsx'
 import Notepad from '../components/Notepad.jsx'
 
 const history = createHistory()
-const historyMiddleWare = routerMiddleware(history)
+const middlewares = [
+  routerMiddleware(history),
+  simpleLoggerMiddleware,
+]
 const store = createStore(
   combineReducers({
     counter : counterReducer,
     notepad : notepadReducer,
     router  : routerReducer,
   }),
-  applyMiddleware(historyMiddleWare)
+  applyMiddleware(...middlewares)
 )
 
 export default class App extends React.Component {
