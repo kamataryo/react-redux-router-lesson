@@ -2,7 +2,6 @@ import React from 'react'
 import Header from './Header.jsx'
 
 const Home = (props) => {
-  console.log(props.history)
 
   return (
     <div>
